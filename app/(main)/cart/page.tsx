@@ -11,6 +11,7 @@ import CartPageItem  from '@/components/cartPageItem';
 import { useCarteStore } from '@/lib/hooks/useCartStor';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { ChevronDownIcon } from 'lucide-react';
+import MobileCartPage from '@/components/mbilecartPage';
 export default function Component() {
     const { data: session } = useSession()
     const {total,cart}:any = useCarteStore((state)=>state)
@@ -23,8 +24,11 @@ export default function Component() {
       {
             cart && cart.length > 0 ? cart.map((item:any) => (
               <>
-      <div className='flex flex-col mr-96'>
+      <div className='hidden md:flex flex-col mr-96'>
               <CartPageItem key={item._id} item={item} />
+              </div>
+              <div className='flex md:hidden flex-col mr-96'>
+              <MobileCartPage key={item._id} item={item} />
               </div>
            
               </>
@@ -37,7 +41,7 @@ export default function Component() {
       </div>
       {cart.length > 0 && (
         
-        <div className="max-w-sm mx-auto fixed md:top-32 sm:bottom-0 sm:right-[50%]   md:right-0 w-78 p-6 bg-gray-100 rounded-md my-8   shadow-md">
+        <div className="max-w-sm mx-auto fixed md:top-32 hidden md:block    sm:bottom-0 sm:right-[50%]   md:right-0 w-78 p-6 bg-gray-100 rounded-md my-8   shadow-md">
         <h2 className="text-lg font-semibold">Summary</h2>
         <div className="mt-4">
           {/* <div className="flex justify-between">

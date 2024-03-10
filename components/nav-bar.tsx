@@ -13,6 +13,7 @@ import { useCarteStore } from '@/lib/hooks/useCartStor'
 import { signIn, signOut } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
 import Searchbar from './searchbar';
+import { MobilMenu } from './navbarshets';
   
 
 function Navbar() {
@@ -32,28 +33,36 @@ function Navbar() {
         </div>
      </div>
      <div className='flex flex-row items-center'>
+      <div className='md:hidden flex'>
+      <MobilMenu />
+      </div>
+    
+      <div className='hidden md:flex'>
       {session ? (
         
-         <TooltipProvider>
-          
-  <Tooltip delayDuration={0} >
-    <TooltipTrigger  onClick={()=>signOut()} >
-      {/* @ts-ignore */}
-    <p  className='text-sm text-gray-500 cursor-pointer flex flex-row items-center mr-2'>Hey   {session.user?.data?.name} | </p>
-    </TooltipTrigger>
-    <TooltipContent onClick={()=>signOut()} className='bg-neutral-950 text-white'>
-      <p>Log out</p>
-    </TooltipContent>
-  </Tooltip>
-</TooltipProvider>
+        
+        <TooltipProvider>
          
-      ) : 
-      <p onClick={()=>signIn()} className='text-sm text-gray-500 flex flex-row items-center cursor-pointer mr-2'>Log in | </p>
-      }
+ <Tooltip delayDuration={0} >
+   <TooltipTrigger  onClick={()=>signOut()} >
+     {/* @ts-ignore */}
+   <p  className='text-sm text-gray-500 cursor-pointer flex flex-row items-center mr-2'>Hey   {session.user?.data?.name} | </p>
+   </TooltipTrigger>
+   <TooltipContent onClick={()=>signOut()} className='bg-neutral-950 text-white'>
+     <p>Log out</p>
+   </TooltipContent>
+ </Tooltip>
+</TooltipProvider>
+        
+     ) : 
+     <p onClick={()=>signIn()} className='text-sm text-gray-500 flex flex-row items-center cursor-pointer mr-2'>Log in | </p>
+     }
+      </div>
+      
       
        
-     
-      <Link href='/cart'>
+     <div className='hidden md:flex '>
+     <Link href='/cart'>
       <TooltipProvider>
   <Tooltip delayDuration={0}>
     <TooltipTrigger className='flex mr-5 bg-neutral-950 flex-row items-center rounded-full h-8 w-16'>
@@ -67,6 +76,8 @@ function Navbar() {
   </Tooltip>
 </TooltipProvider>
       </Link>
+     </div>
+      
         </div>
     </div>
   )

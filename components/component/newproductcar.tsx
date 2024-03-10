@@ -1,46 +1,20 @@
 import { Button } from "@/components/ui/button"
-import React from 'react'
+import { Label } from "@/components/ui/label"
+import { RadioGroupItem, RadioGroup } from "@/components/ui/radio-group"
+import { SelectValue, SelectTrigger, SelectItem, SelectContent, Select } from "@/components/ui/select"
 
-
-import axios from 'axios'
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { ChevronDownIcon } from 'lucide-react';
-// import { useSession } from "next-auth/react"
-import ProductsPageContainer from "@/components/productPageContainer"
-import Addtocartbutton from "@/components/add-tocart-button"
-import RenderaddtocartButton from "@/components/renderaddtocartButton"
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-// import { useCarteStore } from "@/lib/hooks/useCartStor"
-async function getData(id: string) {
-  const res = await axios.get(`${process.env.API_URL}/product/${id}`)
-  return res.data
-}
-export default  async function page({
-    params,
-    searchParams,
-  }: {
-    params: { id: string };
-    searchParams?: { [key: string]: string | string[] | undefined };
-  }) {
-    const id = params.id
-    const data = await getData(id)
-    console.log(data)
-    // add to carte
-    // const {addProductToCart} = useCarteStore((state):any=>state)
-   
+export function Newproductcar() {
   return (
-    <div className="grid md:grid-cols-2 items-start max-w-6xl mt-16 px-4 mx-auto gap-6 lg:gap-12 py-6">
+    <div className="grid md:grid-cols-2 items-start max-w-6xl px-4 mx-auto gap-6 lg:gap-12 py-6">
       <div className="flex flex-col justify-center items-center gap-4 md:gap-8">
         <img
           alt="Product Image"
           className="aspect-square object-cover border border-gray-200 w-full rounded-lg overflow-hidden dark:border-gray-800"
           height={600}
-          src={data.data?.image}
+          src="/placeholder.svg"
           width={600}
         />
-        {/* <div className="flex flex-col gap-2 items-start">
+        <div className="flex flex-col gap-2 items-start">
           <h1 className="font-bold text-2xl sm:text-3xl">Acme Circles T-Shirt</h1>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-0.5">
@@ -52,17 +26,15 @@ export default  async function page({
             </div>
             <Button>Button</Button>
           </div>
-        </div> */}
+        </div>
       </div>
       <div className="grid gap-4 md:gap-10 items-start">
         <div className="hidden md:flex items-start">
           <div className="grid gap-4">
-            <h1 className="font-bold text-3xl lg:text-4xl">{data.data?.title}</h1>
-           
-            
-            {/* <div>
+            <h1 className="font-bold text-3xl lg:text-4xl">Acme Circles T-Shirt</h1>
+            <div>
               <p>60% combed ringspun cotton/40% polyester jersey tee.</p>
-            </div> */}
+            </div>
             {/* <div className="flex items-center gap-4">
               <div className="flex items-center gap-0.5">
                 <StarIcon className="w-5 h-5 fill-primary" />
@@ -73,17 +45,14 @@ export default  async function page({
               </div>
             </div> */}
           </div>
-          <div className="text-4xl font-bold ml-auto">${data.data?.price}</div>
+          <div className="text-4xl font-bold ml-auto">$99</div>
         </div>
-        
         <form className="grid gap-4 md:gap-10">
-        
           <div className="grid gap-2">
-          
-            <Label className="text-base hidden md:flex" htmlFor="color">
-              Color: {data?.data?.color.name}
+            <Label className="text-base" htmlFor="color">
+              Color
             </Label>
-            {/* <RadioGroup className="flex items-center gap-2" defaultValue="black" id="color">
+            <RadioGroup className="flex items-center gap-2" defaultValue="black" id="color">
               <Label
                 className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
                 htmlFor="color-black"
@@ -105,13 +74,13 @@ export default  async function page({
                 <RadioGroupItem id="color-blue" value="blue" />
                 Blue
               </Label>
-            </RadioGroup> */}
+            </RadioGroup>
           </div>
           <div className="grid gap-2">
-            <Label className="text-base hidden md:flex" htmlFor="size">
-              Size: {data.data?.size.name}
+            <Label className="text-base" htmlFor="size">
+              Size
             </Label>
-            {/* <RadioGroup className="flex items-center gap-2" defaultValue="m" id="size">
+            <RadioGroup className="flex items-center gap-2" defaultValue="m" id="size">
               <Label
                 className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
                 htmlFor="size-xs"
@@ -147,9 +116,9 @@ export default  async function page({
                 <RadioGroupItem id="size-xl" value="xl" />
                 XL
               </Label>
-            </RadioGroup> */}
+            </RadioGroup>
           </div>
-          {/* <div className="grid gap-2">
+          <div className="grid gap-2">
             <Label className="text-base" htmlFor="quantity">
               Quantity
             </Label>
@@ -165,16 +134,16 @@ export default  async function page({
                 <SelectItem value="5">5</SelectItem>
               </SelectContent>
             </Select>
-          </div> */}
-         
+          </div>
+          <Button size="lg">Add to cart</Button>
         </form>
-        <RenderaddtocartButton products={data.data} />
       </div>
     </div>
   )
 }
 
-function ShoppingCartIcon(props: any) {
+
+function StarIcon(props: any) {
   return (
     <svg
       {...props}
@@ -188,9 +157,7 @@ function ShoppingCartIcon(props: any) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <circle cx="8" cy="21" r="1" />
-      <circle cx="19" cy="21" r="1" />
-      <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
     </svg>
   )
 }

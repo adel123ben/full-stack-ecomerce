@@ -4,6 +4,9 @@ import { CardTitle, CardHeader, CardContent, CardFooter, Card } from "@/componen
 import { useCarteStore } from "@/lib/hooks/useCartStor";
 import { Badge } from "./ui/badge";
 import { TrashIcon } from "lucide-react";
+import { Label } from "./ui/label";
+import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
 type Props = {
     item?:{

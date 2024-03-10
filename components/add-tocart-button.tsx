@@ -27,7 +27,7 @@ function Addtocartbutton({products}:Props) {
   return (
     <div>
       
-      <Button onClick={() => addProductToCart(products) || toast.success("Product added to cart")} className="flex items-center space-x-2 rounded-full bg-neutral-950">
+      <Button size="lg" onClick={() => addProductToCart(products) || toast.success("Product added to cart")} className="flex items-center space-x-2 w-full bg-neutral-950">
          Add to cart
           {/* <ShoppingCartIcon className="w-5 h-5" /> */}
         </Button>
