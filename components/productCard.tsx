@@ -82,7 +82,7 @@ export default function ProductCard({products}:Props) {
     </div>
     {/* Price & Reiew */}
     <div className="flex items-center justify-between">
-     <p>{products?.price}$</p>
+     <p>{products?.price} DA</p>
     </div>
   </div>
   )
