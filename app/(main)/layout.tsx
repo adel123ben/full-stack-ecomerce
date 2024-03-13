@@ -1,3 +1,4 @@
+import AnnouncementBar from '@/components/anoucementBar'
 import Footer from '@/components/footer'
 import Navbar from '@/components/nav-bar'
 import React from 'react'
@@ -11,10 +12,13 @@ function layout({
 }: Props) {
   return (
     <div>
+      <AnnouncementBar />
+      <div className='mt-12'>
       <Navbar />
       {children}
       <div className="">
       <Footer />
+      </div>
       </div>
     </div>
   )

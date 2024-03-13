@@ -12,6 +12,10 @@ import toast from "react-hot-toast";
 // const COLOR_DIGIT = "ABCDEF1234567890";
 
 
+function numberWithCommas(x:any) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 type Props = {
   product: {
     price: number;
@@ -82,6 +86,9 @@ export default function OrderCard({product}: Props) {
         }
     }
 
+    const totalPrice = product.price * quntity;
+    const formattedNumber = numberWithCommas(totalPrice);
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       try {
@@ -149,9 +156,9 @@ export default function OrderCard({product}: Props) {
             <Input value={commune} onChange={(e) => setCommune(e.target.value)} id="address" placeholder="البلدية " />
           </div>
           <div className="flex items-center justify-between border-t border-b py-2">
-            <Button onClick={handelDecreaseQuantity} className="text-red-500">-</Button>
+            <Button onClick={handelDecreaseQuantity} className="text-red-500 bg-neutral-900 ">-</Button>
             <span className="text-lg font-semibold">{quntity}</span>
-            <Button onClick={handladdtocart} className="text-green-500">+</Button>
+            <Button onClick={handladdtocart} className=" text-green-500 bg-neutral-900 ">+</Button>
           </div>
         </div>
       </CardContent>
@@ -172,9 +179,9 @@ export default function OrderCard({product}: Props) {
           </div>
           <div className="flex justify-between">
             <span className="text-xl font-bold text-gray-900">Total</span>
-            <span className="text-xl font-bold text-gray-900 mb-6">{product.price} DZD</span>
+            <span className="text-xl font-bold text-gray-900 mb-6">{formattedNumber} DZD</span>
           </div>
-          <Button type="submit"  className="sm:w-[300px] h-[40px] w-[200px] sm:h-[50px] font-medium text-sm  border-neutral-950 border-4  hover:bg-opacity-70 text-center bg-slate-950  text-white animate-bounce">إشتري الأن</Button>
+          <Button type="submit"  className="sm:w-[300px] md:w-[310px] h-[40px] w-[200px] sm:h-[50px] font-medium text-sm  border-neutral-950 border-4  hover:bg-opacity-70 text-center bg-[#d16002]  text-white animate-bounce">إشتري الأن</Button>
         </div>
       </CardFooter>
       </form>
