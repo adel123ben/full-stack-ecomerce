@@ -9,6 +9,7 @@ import { ChevronDownIcon } from 'lucide-react';
 import ProductsPageContainer from "@/components/productPageContainer"
 import Addtocartbutton from "@/components/add-tocart-button"
 import RenderaddtocartButton from "@/components/renderaddtocartButton"
+import { Carousel } from "@/components/ui/carousel"
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -34,12 +35,23 @@ export default  async function page({
   return (
     <div className="max-w-4xl mx-auto p-6 mt-16">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div className="mb-8 md:mb-0">
+      <div className="mb-8 md:mb-0 space-y-7">
         <img
           alt="Montre Naviforce"
-          className="w-full h-auto"
+          className="w-full h-auto rounded-lg"
           height="500"
           src={data.data?.image}
+          style={{
+            aspectRatio: "500/500",
+            objectFit: "cover",
+          }}
+          width="500"
+        />
+        <img
+          alt="Montre Naviforce"
+          className="w-full h-auto rounded-lg"
+          height="500"
+          src={data.data?.image2}
           style={{
             aspectRatio: "500/500",
             objectFit: "cover",
@@ -50,7 +62,7 @@ export default  async function page({
       <div>
         <h1 className="text-3xl font-medium mb-4">{data.data?.title}</h1>
         <p className="text-xl font-mono mb-6 text-gray-700 divide-x">DA {data.data?.price} DZD</p>
-        <div className="mb-8 text-gray-500">
+        {/* <div className="mb-8 text-gray-500">
           <h2 className="font-semibold mb-2">الميزات:</h2>
           <ul className="list-disc pl-5 space-y-1">
             <li>ساعة أصلية</li>
@@ -60,15 +72,15 @@ export default  async function page({
             <li>مقاومة للماء 3 bars</li>
             <li>الساعة مع البطاقة الأصلية</li>
           </ul>
-        </div>
+        </div> */}
         <div className="mb-8 text-gray-500">
           <h2 className="font-semibold mb-2">Caractéristiques:</h2>
           <ul className="list-disc pl-5 space-y-1">
-            <li>Montre originale</li>
-            <li>Bracelet en silicone</li>
-            <li>Toutes les danses fonctionnent</li>
-            <li>Résistant à l&apos;eau 3 barres</li>
-            <li>La montre est livrée avec la boîte d&apos;origine</li>
+            <li>{data.data?.benefit}</li>
+            <li>{data.data?.benefit2}</li>
+            <li>{data.data?.benefit3}</li>
+            <li>{data.data?.benefit4}</li>
+            <li>{data.data?.benefit5}</li>
           </ul>
         </div>
         <OrderCard  product={data.data}/>
