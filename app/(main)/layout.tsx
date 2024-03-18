@@ -1,4 +1,5 @@
 import AnnouncementBar from '@/components/anoucementBar'
+import { EmailInput } from '@/components/emailInput'
 import Footer from '@/components/footer'
 import Navbar from '@/components/nav-bar'
 import React from 'react'
@@ -16,6 +17,9 @@ function layout({
       <div className='mt-12'>
       <Navbar />
       {children}
+      {/* <div className="text-center justify-center">
+      <EmailInput />
+      </div> */}
       <div className="">
       <Footer />
       </div>

@@ -32,7 +32,7 @@ export default function ProductCard({products}:Props) {
   
   return (
     
-    <div  className="bg-white   group cursor-pointer rounded-xl border  p-3 space-y-4">
+    <div  className="bg-white hover:shadow-xl transition duration-300 transform hover:-translate-y-2   group cursor-pointer rounded-xl border  p-3 space-y-4">
     {/* Image & actions */}
     
     <div className="aspect-square rounded-xl bg-gray-100 relative">

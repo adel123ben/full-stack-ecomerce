@@ -14,6 +14,7 @@ import { signIn, signOut } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
 import Searchbar from './searchbar';
 import { MobilMenu } from './navbarshets';
+import SearchDialog from './searchDialogue';
   
 
 function Navbar() {
@@ -29,14 +30,22 @@ function Navbar() {
         <div className='flex flex-row items-center  space-x-4'>
             {/* <h1 className='text-sm text-gray-500 cursor-pointer'>Men</h1>
             <h1 className='text-sm text-gray-500 cursor-pointer'>Women</h1> */}
+            <div className='hidden md:flex'>
             <Searchbar />
+            </div>
+           
+           
         </div>
      </div>
      <div className='flex flex-row items-center'>
-      <div className='md:hidden flex'>
-      <MobilMenu />
+      <div className='md:hidden flex space-x-3'>
+      <SearchDialog />
+      {/* <MobilMenu /> */}
+     <Link href='/cart'>
+     <ShoppingBag size={20}/>
+     </Link>
       </div>
-    
+
       <div className='hidden md:flex'>
       {session ? (
         

@@ -33,12 +33,12 @@ export default  async function page({
     // const {addProductToCart} = useCarteStore((state):any=>state)
    
   return (
-    <div className="max-w-4xl mx-auto p-6 mt-16">
+    <div className="max-w-4xl mx-auto p-6 mt-3 md:mt-10">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div className="mb-8 md:mb-0 space-y-7">
         <img
           alt="Montre Naviforce"
-          className="w-full h-auto rounded-lg"
+          className="w-full h-auto cursor-pointer rounded-lg transition duration-300 transform hover:scale-105"
           height="500"
           src={data.data?.image}
           style={{
@@ -49,7 +49,7 @@ export default  async function page({
         />
         <img
           alt="Montre Naviforce"
-          className="w-full h-auto rounded-lg"
+          className="w-full h-auto cursor-pointer rounded-lg transition duration-300 transform hover:scale-105"
           height="500"
           src={data.data?.image2}
           style={{

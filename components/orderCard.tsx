@@ -132,7 +132,7 @@ export default function OrderCard({product}: Props) {
             <Label className="font-semibold text-gray-700" htmlFor="phone">
               الهاتف *
             </Label>
-            <Input value={phone} onChange={(e) => setPhone(e.target.value)} id="phone" placeholder="الهاتف" />
+            <Input type="number" value={phone} onChange={(e) => setPhone(e.target.value)} id="phone" placeholder="الهاتف" />
           </div>
           <div className="flex flex-col space-y-1">
             <Label className="font-semibold text-gray-700" htmlFor="region">
@@ -181,7 +181,7 @@ export default function OrderCard({product}: Props) {
             <span className="text-xl font-bold text-gray-900">Total</span>
             <span className="text-xl font-bold text-gray-900 mb-6">{formattedNumber} DZD</span>
           </div>
-          <Button type="submit"  className="sm:w-[300px] md:w-[310px] h-[40px] w-[200px] sm:h-[50px] font-medium text-sm  border-neutral-950 border-4  hover:bg-opacity-70 text-center bg-[#d16002]  text-white animate-bounce">إشتري الأن</Button>
+          <Button type="submit"  className="sm:w-[300px] md:w-[310px] h-[40px] w-[270px] sm:h-[50px] font-medium text-sm  border-neutral-950 border-4  hover:bg-opacity-70 text-center bg-[#d16002]  text-white animate-bounce">إشتري الأن</Button>
         </div>
       </CardFooter>
       </form>
